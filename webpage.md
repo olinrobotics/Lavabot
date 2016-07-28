@@ -1,7 +1,7 @@
 ---
-title: Lavabot Page
+title: Lavabot Webpage
 layout: template
-filename: lavabot_page
+filename: webpage
 --- 
 
 # Hoi
