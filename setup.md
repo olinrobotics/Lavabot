@@ -1,5 +1,5 @@
 ---
-title: Lavabot- Getting Started
+title: Setup
 layout: template
 filename: setup 
 --- 
