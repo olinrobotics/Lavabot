@@ -16,11 +16,6 @@ See a video of our current work [here!](link)
 
 ![Nana](images/2016.7.14_Lavabot.JPG)
 
-###### *T-Rex Manual: [Page 1](../images/trex_docpg1.JPG) [Page 2](../images/trex_docpg2.JPG) [Page 3](../images/trex_docpg3.JPG)*
-
-###### *[Electrical Diagram](../images/2016.7.20 Wiring Diagram.JPG) | [Mechanical Diagram](../images/2016.7.28 Mechanical Diagram.JPG)*
-
-
 ### [Watch Nana drive](https://drive.google.com/open?id=0B6cEozG9ml5MTW4tWkdSQzNXMG8)
 
 
@@ -40,6 +35,4 @@ Our current fiducial detection system is capable of tracking and detecting the o
 
 ### [See our code in action](https://drive.google.com/file/d/0B6cEozG9ml5MRDA3VThmT3BteWM/view?usp=sharing)
 
-### [How we did it](https://olinrobotics.github.io/odroid_info#setup-arpose)
-
-*This Github page is currently under construction. Last edited on 7/28/16.*
+*This Github page is currently under construction. Last edited on 10/21/16.*
