@@ -8,15 +8,13 @@ filename: index
 
 Research in the Olin Intelligent Vehicles Lab, under Prof. Andrew Barrett. The end goal of this research is for a squadron of ground and air vehicles to communicate with each other in order to collect samples from hazardous environments fully autonomously.
 
-See a video of our current work [here!](link)
-
 ## Meet our Robots!
 
 #### Nananana Makakiʻi: The Track T-Rex
 
 ![Nana](images/2016.7.14_Lavabot.JPG)
 
-### [Watch Nana drive](https://drive.google.com/open?id=0B6cEozG9ml5MTW4tWkdSQzNXMG8)
+### [Watch Nana drive](https://drive.google.com/file/d/0B6cEozG9ml5MSk1rZzdiLUs0TVE/view?usp=sharing)
 
 
 ## April Tag Recognition
@@ -35,4 +33,4 @@ Our current fiducial detection system is capable of tracking and detecting the o
 
 ### [See our code in action](https://drive.google.com/file/d/0B6cEozG9ml5MRDA3VThmT3BteWM/view?usp=sharing)
 
-*This Github page is currently under construction. Last edited on 10/21/16.*
+*This Github page is currently under construction. Last edited on 10/30/16.*
