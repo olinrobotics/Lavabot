@@ -10,12 +10,15 @@ Research in the Olin Intelligent Vehicles Lab, under Prof. Andrew Barrett. The e
 
 ## Meet our Robots!
 
-#### Nananana Makakiʻi: The Track T-Rex
+#### Samwise: The Track T-Rex
 
-![Nana](images/2016.7.14_Lavabot.JPG)
+![Sam](images/2016.7.14_Lavabot.JPG)
 
-### [Watch Nana drive](https://drive.google.com/file/d/0B6cEozG9ml5MSk1rZzdiLUs0TVE/view?usp=sharing)
+### [Watch Sam drive](https://drive.google.com/file/d/0B6cEozG9ml5MSk1rZzdiLUs0TVE/view?usp=sharing)
 
+### Frodo: The F550 Flamewheel Hexacopter
+
+![Frodo](/images/Frodo1.JPG)
 
 ## April Tag Recognition
 
