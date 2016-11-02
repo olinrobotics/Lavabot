@@ -23,11 +23,11 @@ filename: setup
 
   * *[My controller is complaining about flaps.](link)*
 
-![Trans1](images/Transmitter1.JPG)
+  ![Trans1](images/Transmitter1.JPG)
 
 5. Center both sticks.
 
-![Trans2](images/Transmitter2.JPG)
+  ![Trans2](images/Transmitter2.JPG)
 
 6. Plug in the vehicle's battery. The light on the Pixhawk should flash, and the buzzer will play a sequence of notes.
 
