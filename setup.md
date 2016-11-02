@@ -7,7 +7,7 @@ filename: setup
 ### Samwise Pre-drive Checklist
 
 #### 1. Turn on the controller, making sure that the left stick (throttle) is centered and down. Double check the screen to make sure you have selected the correct vehicle.
-*[How do I change my currently selected vehicle?]* (link)
+*[How do I change my currently selected vehicle?]*(link)
 
 ![Trans1](images/Transmitter1.JPG)
 
