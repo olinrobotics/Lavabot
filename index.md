@@ -18,7 +18,7 @@ Research in the Olin Intelligent Vehicles Lab, under Prof. Andrew Barrett. The e
 
 ### Frodo: The F550 Flamewheel Hexacopter
 
-![Frodo](/images/Frodo1.JPG)
+![Frodo](images/Frodo1.JPG)
 
 ## April Tag Recognition
 
