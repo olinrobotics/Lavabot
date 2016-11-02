@@ -19,9 +19,9 @@ filename: setup
 
 4. Turn on the controller, making sure that the left stick (throttle) is centered and down. Double check the screen to make sure you have selected the correct vehicle.
 
-  * *[How do I change my currently selected vehicle?](https://drive.google.com/file/d/0B6cEozG9ml5MSk1rZzdiLUs0TVE/view?usp=sharing)*
+  * *[How do I change my currently selected vehicle?](link)*
 
-  * *[My controller is complaining about flaps.](https://drive.google.com/file/d/0B6cEozG9ml5MSk1rZzdiLUs0TVE/view?usp=sharing)*
+  * *[My controller is complaining about flaps.](link)*
 
 ![Trans1](images/Transmitter1.JPG)
 
@@ -38,10 +38,12 @@ filename: setup
 9. Your parameters will now load.
 
 10. Make sure your controller has been calibrated [here.](http://ardupilot.org/copter/docs/common-radio-control-calibration.html)
-  * Make sure your "flight" modes are set correctly, as shown [here.](http://ardupilot.org/copter/docs/common-rc-transmitter-flight-mode-configuration.html) 
+
+11. Make sure your "flight" modes are set correctly, as shown [here.](http://ardupilot.org/copter/docs/common-rc-transmitter-flight-mode-configuration.html) 
   * Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
   * *[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
 
-11. Center both sticks.
+12. If this is the vehicle's maiden journey, or if it recently had a bad crash, recalibrate the accelerometers in the Pixhawk.
+  * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
 
 *This page is under construction. Last edited 11/2/16*
