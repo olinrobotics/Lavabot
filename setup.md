@@ -8,7 +8,7 @@ filename: setup
 
 #### 1. Turn on the controller, making sure that the throttle stick is centered and down.
 
-![Sam](images/Transmitter1.JPG)
+![Trans1](images/Transmitter1.JPG)
 
 #### 2. 
 
