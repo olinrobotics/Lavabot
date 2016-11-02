@@ -38,8 +38,9 @@ filename: setup
 9. Your parameters will now load.
 
 10. Make sure your controller has been calibrated [here.](http://ardupilot.org/copter/docs/common-radio-control-calibration.html)
-* Make sure your "flight" modes are set correctly, as shown [here.](http://ardupilot.org/copter/docs/common-rc-transmitter-flight-mode-configuration.html) Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
-*[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
+  * Make sure your "flight" modes are set correctly, as shown [here.](http://ardupilot.org/copter/docs/common-rc-transmitter-flight-mode-configuration.html) 
+  * Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
+  * *[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
 
 11. Center both sticks.
 
