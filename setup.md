@@ -45,5 +45,7 @@ filename: setup
 
 12. If this is the vehicle's maiden journey, or if it recently had a bad crash, recalibrate the accelerometers in the Pixhawk.
   * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
+  
+13. gg
 
 *This page is under construction. Last edited 11/2/16*
