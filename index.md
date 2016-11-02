@@ -16,7 +16,7 @@ Research in the Olin Intelligent Vehicles Lab, under Prof. Andrew Barrett. The e
 
 ### [Watch Sam drive](https://drive.google.com/file/d/0B6cEozG9ml5MSk1rZzdiLUs0TVE/view?usp=sharing)
 
-### Frodo: The F550 Flamewheel Hexacopter
+#### Frodo: The F550 Flamewheel Hexacopter
 
 ![Frodo](images/Frodo1.JPG)
 
