@@ -6,6 +6,10 @@ filename: setup
 
 ### Samwise Pre-drive Checklist
 
-1. Turn on the controller.
+# 1. Turn on the controller, making sure 
 
-*This page is under construction. Last edited 7/28/16*
+![Sam](images/2016.7.14_Lavabot.JPG)
+
+# 2. 
+
+*This page is under construction. Last edited 11/2/16*
