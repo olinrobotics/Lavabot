@@ -7,10 +7,10 @@ filename: setup
 ### Samwise Pre-drive Checklist
 
 1. Double check the vehicle to make sure all wires are plugged in properly. At minimum, your vehicle should have...
-- Power from the battery to the Pixhawk flight controller and the Sabertooth motor controller
-- A transceiver
-- A safety switch
-- A buzzer
+* Power from the battery to the Pixhawk flight controller and the Sabertooth motor controller
+* A transceiver
+* A safety switch
+* A buzzer
 
 2. Check for loose components, especially near the motors and gear train.
 
