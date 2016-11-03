@@ -40,11 +40,11 @@ filename: setup
 10. Make sure your controller has been calibrated [here.](http://ardupilot.org/copter/docs/common-radio-control-calibration.html)
 
 11. Make sure your "flight" modes are set correctly, as shown [here.](http://ardupilot.org/copter/docs/common-rc-transmitter-flight-mode-configuration.html) 
-  * Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
-  * *[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
+      * Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
+      * *[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
 
 12. If this is the vehicle's maiden journey, or if it recently had a bad crash, recalibrate the accelerometers in the Pixhawk.
-  * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
+      * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
   
 13. Double check that both controller sticks are centered and place the robot on the ground. Now press and hold the safety switch until it glows a solid red when you let go of it.
 
@@ -52,7 +52,7 @@ filename: setup
 
 15. Warn everyone that you're arming the robot, then press the "Arm" button. The buzzer will play a long, low note, indicating that the robot is armed. The vehicle may now move unexpectedly, so be cautious when approaching it.
 
-  * *[My buzzer played two unhappy notes and didn't arm.](link)*
+      * *[My buzzer played two unhappy notes and didn't arm.](link)*
 
 #### Sam should now be driveable.
 
