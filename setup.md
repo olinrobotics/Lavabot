@@ -8,10 +8,10 @@ filename: setup
 
 1. Double check the vehicle to make sure all wires are plugged in properly. At minimum, your vehicle should have...
 
-  * Power from the battery to the Pixhawk flight controller and the Sabertooth motor controller
-  * A transceiver
-  * A safety switch
-  * A buzzer
+    * Power from the battery to the Pixhawk flight controller and the Sabertooth motor controller
+    * A transceiver
+    * A safety switch
+    * A buzzer
 
 2. Check for loose components, especially near the motors and gear train.
 
@@ -19,15 +19,15 @@ filename: setup
 
 4. Turn on the controller, making sure that the left stick (throttle) is centered and down. Double check the screen to make sure you have selected the correct vehicle.
 
-  * *[How do I change my currently selected vehicle?](https://github.com/olinrobotics/olinrobotics.github.io/blob/master/change_vehicle.md)*
+    * *[How do I change my currently selected vehicle?](https://github.com/olinrobotics/olinrobotics.github.io/blob/master/change_vehicle.md)*
 
-  * *[My controller is complaining about flaps.](./controller_fixes.md)*
+    * *[My controller is complaining about flaps.](./controller_fixes.md)*
 
-  ![Trans1](images/Transmitter1.JPG)
+    ![Trans1](images/Transmitter1.JPG)
 
 5. Center both sticks.
 
-  ![Trans2](images/Transmitter2.JPG)
+    ![Trans2](images/Transmitter2.JPG)
 
 6. Plug in the vehicle's battery. The light on the Pixhawk should flash, and the buzzer will play a sequence of notes.
 
