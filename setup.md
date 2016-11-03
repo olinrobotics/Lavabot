@@ -21,7 +21,7 @@ filename: setup
 
   * *[How do I change my currently selected vehicle?](https://github.com/olinrobotics/olinrobotics.github.io/blob/master/change_vehicle.md)*
 
-  * *[My controller is complaining about flaps.](/controller_fixes.md)*
+  * *[My controller is complaining about flaps.](controller_fixes.md)*
 
   ![Trans1](images/Transmitter1.JPG)
 
