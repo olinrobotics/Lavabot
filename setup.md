@@ -54,6 +54,6 @@ filename: setup
 
   * *[My buzzer played two unhappy notes and didn't arm.](link)*
 
-Sam should now be driveable.
+#### Sam should now be driveable.
 
 *This page is under construction. Last edited 11/2/16*
