@@ -46,6 +46,14 @@ filename: setup
 12. If this is the vehicle's maiden journey, or if it recently had a bad crash, recalibrate the accelerometers in the Pixhawk.
   * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
   
-13. gg
+13. Double check that both controller sticks are centered and place the robot on the ground. Now press and hold the safety switch until it glows a solid red when you let go of it.
+
+14. Navigate to the "Actions" tab in the left hand menu. It should be the second tab in the window.
+
+15. Warn everyone that you're arming the robot, then press the "Arm" button. The buzzer will play a long, low note, indicating that the robot is armed. The vehicle may now move unexpectedly, so be cautious when approaching it.
+
+  * *[My buzzer played two unhappy notes and didn't arm.](link)*
+
+Sam should now be driveable.
 
 *This page is under construction. Last edited 11/2/16*
