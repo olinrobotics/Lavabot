@@ -8,10 +8,10 @@ filename: setup
 
 1. Double check the vehicle to make sure all wires are plugged in properly. At minimum, your vehicle should have...
 
-    * Power from the battery to the Pixhawk flight controller and the Sabertooth motor controller
-    * A transceiver
-    * A safety switch
-    * A buzzer
+   * Power from the battery to the Pixhawk flight controller and the Sabertooth motor controller
+   * A transceiver
+   * A safety switch
+   * A buzzer
 
 2. Check for loose components, especially near the motors and gear train.
 
@@ -19,15 +19,15 @@ filename: setup
 
 4. Turn on the controller, making sure that the left stick (throttle) is centered and down. Double check the screen to make sure you have selected the correct vehicle.
 
-    * *[How do I change my currently selected vehicle?](https://github.com/olinrobotics/olinrobotics.github.io/blob/master/change_vehicle.md)*
+   * *[How do I change my currently selected vehicle?](https://github.com/olinrobotics/olinrobotics.github.io/blob/master/change_vehicle.md)*
 
-    * *[My controller is complaining about flaps.](./controller_fixes.md)*
+   * *[My controller is complaining about flaps.](./controller_fixes.md)*
 
-    ![Trans1](images/Transmitter1.JPG)
+   ![Trans1](images/Transmitter1.JPG)
 
 5. Center both sticks.
 
-    ![Trans2](images/Transmitter2.JPG)
+   ![Trans2](images/Transmitter2.JPG)
 
 6. Plug in the vehicle's battery. The light on the Pixhawk should flash, and the buzzer will play a sequence of notes.
 
@@ -40,11 +40,13 @@ filename: setup
 10. Make sure your controller has been calibrated [here.](http://ardupilot.org/copter/docs/common-radio-control-calibration.html)
 
 11. Make sure your "flight" modes are set correctly, as shown [here.](http://ardupilot.org/copter/docs/common-rc-transmitter-flight-mode-configuration.html) 
-      * Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
-      * *[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
+
+   * Your main mode should be Manual or Learning, with your secondary mode being Auto, and your tertiary mode being Hold.
+   * *[Read more about control modes for ArduRover here](http://ardupilot.org/rover/docs/rover-control-modes.html)*
 
 12. If this is the vehicle's maiden journey, or if it recently had a bad crash, recalibrate the accelerometers in the Pixhawk.
-      * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
+
+   * *[How to calibrate the accelerometers.](http://ardupilot.org/copter/docs/common-accelerometer-calibration.html)*
   
 13. Double check that both controller sticks are centered and place the robot on the ground. Now press and hold the safety switch until it glows a solid red when you let go of it.
 
@@ -52,8 +54,8 @@ filename: setup
 
 15. Warn everyone that you're arming the robot, then press the "Arm" button. The buzzer will play a long, low note, indicating that the robot is armed. The vehicle may now move unexpectedly, so be cautious when approaching it.
 
-      * *[My buzzer played two unhappy notes and didn't arm.](link)*
+   * *[My buzzer played two unhappy notes and didn't arm.](link)*
 
 #### Sam should now be driveable.
 
-*This page is under construction. Last edited 11/2/16*
+*This page is under construction. Last edited 11/3/16*
