@@ -53,7 +53,7 @@ filename: setup
 
 15. Warn everyone that you're arming the robot, then press the "Arm" button. The buzzer will play a long, low note, indicating that the robot is armed. The vehicle may now move unexpectedly, so be cautious when approaching it.
 
-   * *[My buzzer played two unhappy notes and didn't arm.](link)*
+   * *[My buzzer played two unhappy notes and didn't arm.](http://ardupilot.org/copter/docs/prearm_safety_check.html)*
 
 #### Sam should now be driveable.
 
