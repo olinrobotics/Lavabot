@@ -57,6 +57,6 @@ filename: setup
 
 #### Sam should now be driveable.
 
-*[I'm still having an issue.](drive_troubleshooting)*
+*[I'm still having an issue.](troubleshooting)*
 
 *This page is under construction. Last edited 11/3/16*
