@@ -1,7 +1,7 @@
 ---
-title: Drive Troubleshooting
+title: Troubleshooting
 layout: template
-filename: drive_troubleshooting
+filename: troubleshooting
 ---
 
 
