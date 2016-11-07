@@ -15,6 +15,8 @@ When the DX8 controllers complain about your vehicle's non-existant flaps, they 
 
 ![Flapswitch](images/flap_switch.JPG)
 
+*The problem switch is the one in the middle right marked "Flaps/Gyro"*
+
 On a normal airplane, this switch would control the flaps.
 
 ![Flaps](images/flap.jpg)
