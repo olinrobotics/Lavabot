@@ -21,4 +21,4 @@ On a normal airplane, this switch would control the flaps.
 
 Flip this switch down all the way, to the lowest possible setting, before you turn your controller on. Afterwards, you are free to set them to whatever position you require. The DX8 controllers only check this switch's position once, when you turn on the controller.
 
-*This page is under construction. Last edited 11/3/16*
+*This page is under construction. Last edited 11/6/16*
