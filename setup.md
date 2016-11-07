@@ -19,7 +19,7 @@ filename: setup
 
 4. Turn on the controller, making sure that the left stick (throttle) is centered and down. Double check the screen to make sure you have selected the correct vehicle.
 
-  * *[How do I change my currently selected vehicle?](github.com/olinrobotics/olinrobotics.github.io/blob/master/change_vehicle.md)*
+  * *[How do I change my currently selected vehicle?](https://olinrobotics.github.io/change_vehicle)*
   * *[My controller is complaining about flaps.](./controller_fixes.md)*
 
    ![Trans1](images/Transmitter1.JPG)
