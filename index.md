@@ -36,4 +36,12 @@ Our current fiducial detection system (AR_toolkit) is capable of tracking and de
 
 ### [See our code in action](https://drive.google.com/file/d/0B6cEozG9ml5MRDA3VThmT3BteWM/view?usp=sharing)
 
-*This Github page is currently under construction. Last edited on 10/30/16.*
+## Tutorials and Troubleshooting
+
+Always being updated as we encounter problems.
+
+1. [Setting up Sam](Setup)
+2. [Flying with Frodo](Setup)
+3. [Control Issues (and Solutions)](Troubleshooting)
+
+*This Github page is currently under construction. Last edited on 11/13/16.*
