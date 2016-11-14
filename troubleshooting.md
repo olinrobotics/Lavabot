@@ -5,13 +5,13 @@ filename: troubleshooting
 ---
 
 # Index
-*[My motors are not responding to the transmitter commands](#my_motors_are_not_responding_to_the_transmitter_commands)*
+*  *[My motors are not responding to the transmitter commands](#my_motors_are_not_responding_to_the_transmitter_commands)*
 
-*[My motors are obeying the transmitter commands, but they're acting strangely.](#my_motors_are_obeying_the_transmitter commands,_but_they're_acting_strangely)*
+*  *[My motors are obeying the transmitter commands, but they're acting strangely.](#my_motors_are_obeying_the_transmitter commands,_but_they're_acting_strangely)*
 
-*[I can't even arm my rover because my motors go beserk whenever I try.]()*
+*  *[I can't even arm my rover because my motors go beserk whenever I try.]()*
 
-*[I can't disarm my rover.]()*
+*  *[I can't disarm my rover.]()*
 
 ### My motors are not responding to the transmitter commands.
 
@@ -34,10 +34,13 @@ In order, switches 1-6 should be DOWN, UP, DOWN, DOWN, DOWN, UP. This is because
 One possible problem that can occur is if your controller is outputting mixed commands, like the DX8 does by default. In order to account for this problem, go to the Configuration/Standard Params page in Mission Planner. [Set SKID_STEER_IN to 0, and SKID_STEER_OUT to 1.](http://ardupilot.org/rover/docs/skid-steer-parameter-tuning.html) 
 This will tell the Pixhawk that it will be receiving a mixed signal from the controller, and should be outputting an unmixed signal to the Sabertooth. If this combination doesn't work, try changing the values of SKID_STEER_IN and SKID_STEER_OUT.
 
-To read more about motor mixing, [click here.](link)
-To read more about skid steering, [click here.](http://groups.csail.mit.edu/drl/courses/cs54-2001s/skidsteer.html)
-To read more about skid steer parameters and tuning, [click here.](http://ardupilot.org/rover/docs/tuning-steering-and-navigation-for-a-rover.html)
-To read more about DIP switches, [click here.](https://www.dimensionengineering.com/datasheets/Sabertooth2x12.pdf)
+* To read more about motor mixing, [click here.](link)
+
+* To read more about skid steering, [click here.](http://groups.csail.mit.edu/drl/courses/cs54-2001s/skidsteer.html)
+
+* To read more about skid steer parameters and tuning, [click here.](http://ardupilot.org/rover/docs/tuning-steering-and-navigation-for-a-rover.html)
+
+* To read more about DIP switches, [click here.](https://www.dimensionengineering.com/datasheets/Sabertooth2x12.pdf)
 
 ### I can't even arm my rover because my motors go beserk whenever I try.
 
