@@ -5,15 +5,18 @@ from sensors_msgs.msg import Range
 
 wiringpi.wiringPiSetupGpio()
 wiringpi.pinMode(37,1)
+min_distance = 100
 
-'''make the rover stop immediately '''
+'''stop the rover by setting and pushing a waypoint at the current location'''
 def stop_motor():
-    clear_waypoints
+    stoppoint = gps_callback()
+    make_global_waypoint(stoppoint.latitude,stoppoint.longitude)
+    push_waypoints
 
-'''return whether the IR sensor has found the obstacle '''
-def find_obstacle(data):
-    while getdistance(data) > min_distance:
+'''sense obstacle with IR sensor'''
+def find_obstacle():
+    while wiringpi.analogRead(0) > min_distance:
         pass
     else:
         print 'stop'
-        stop_motor
+        stop_motor();
