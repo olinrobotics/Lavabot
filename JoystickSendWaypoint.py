@@ -64,7 +64,7 @@ def addWaypoint(lat, lon):
         waypoint.z_alt = 0
 	print("Adding waypoint: ("+str(waypoint.x_lat)+", "+str(waypoint.y_long)+")")
 	oldWaypoints = waypoints[:]
-	print("Old waypoints: " + len(oldWaypoints))
+	print("Old waypoints: " + str(len(oldWaypoints)))
 	result = push(oldWaypoints + [waypoint])
 	print(result)
 
