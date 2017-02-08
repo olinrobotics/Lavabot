@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """ Code for communication between Pixhawk and Odroid. """
 
 import rospy
@@ -8,6 +7,8 @@ from mavros_msgs.msg import WaypointList
 from mavros_msgs.msg import Waypoint
 from mavros_msgs.srv import WaypointPush
 from mavros_msgs.srv import WaypointPull
+import os
+from Obstacles import infrared_sensor
 
 # State
 latitude = 0
@@ -25,7 +26,7 @@ push = rospy.ServiceProxy('/mavros/mission/push',  WaypointPush)
 # Callback for RC input
 def joyCallBack(data):
 	global lastData
-       	waypoint_data = data.channels[button]
+	waypoint_data = data.channels(button)
 	# around 1100, 1500, or 1900
 	if lastData>0 and abs(lastData - waypoint_data) > 300:
 		sendWaypoint()
@@ -51,22 +52,29 @@ def sendWaypoint():
 # Send waypoint to Pixhawk
 def addWaypoint(lat, lon):
 	waypoint = Waypoint()
-        waypoint.frame = 3
-        waypoint.command = 16
-        waypoint.is_current = 0
-        waypoint.autocontinue = True
-        waypoint.param1 = 0 #hold time
-        waypoint.param2 = 2 #acceptance radius (m)
-        waypoint.param3 = 0
-        waypoint.param4 = 0
-        waypoint.x_lat = lat
-        waypoint.y_long = lon
-        waypoint.z_alt = 0
+	waypoint.frame = 3
+	waypoint.command = 16
+	waypoint.is_current = 0
+	waypoint.autocontinue = True
+	waypoint.param1 = 0 #hold time
+	waypoint.param2 = 2 #acceptance radius (m)
+	waypoint.param3 = 0
+	waypoint.param4 = 0
+	waypoint.x_lat = lat
+	waypoint.y_long = lon
+	waypoint.z_alt = 0
 	print("Adding waypoint: ("+str(waypoint.x_lat)+", "+str(waypoint.y_long)+")")
 	oldWaypoints = waypoints[:]
 	print("Old waypoints: " + str(len(oldWaypoints)))
-	result = push(oldWaypoints + [waypoint])
-	print(result)
+	#result = push(oldWaypoints + [waypoint])
+	#print(result)
+
+def Obstacle_detection(lat,lon,dis):
+	global latitude, longitude
+	while (latitude != lat) and (longitude !=lon) and infrared_sensor(dis):
+		pass
+	if infrared_sensor(dis) == False:
+		addWaypoint(latitude, longitude)
 
 # ROS topics
 rospy.init_node('JoystickSendWaypoint')
@@ -80,11 +88,15 @@ if __name__ == '__main__':
 	r2 = rospy.Rate(1)
 	r2.sleep()
 	addWaypoint(42,42)
+	Obstacle_detection(42,42,800)
 	r2.sleep()
 	addWaypoint(44,44)
+	Obstacle_detection(44,44,800)
 	r2.sleep()
 	addWaypoint(46,46)
+	Obstacle_detection(46,46,800)
 	r2.sleep()
 	addWaypoint(48,48)
+	Obstacle_detection(48,48,800)
 	while not rospy.is_shutdown():
-	    r.sleep() # wait for input
+		r.sleep() # wait for input
