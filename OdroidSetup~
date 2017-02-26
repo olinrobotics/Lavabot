@@ -1,0 +1,26 @@
+To set up an odroid for communicating over mavros, install ros indigo and mavros.
+
+To run code on the odroid via ssh, type these commands into a shell on your computer:
+ifconfig
+nmap 10.42.0.0/24					// use address from ifconfig
+ssh root@10.42.0.75					// use address from nmap
+odroid							// password for odroid
+scp MyProgram.py root@10.42.0.75:/root/
+roscore
+roslaunch mavros apm.launch
+python MyProgram.py
+
+
+If topics exist but messages aren't being published, run the following command:
+rosservice call /mavros/set_stream_rate 0 10 1
+
+If there is no route to host when you try to connect to odroid, attach a keyboard to the odroid and type the following commands:
+ifconfig eth0 up
+dhclient eth0
+
+To set up ROS between multiple computers:
+On each connected machine, run ROS_MASTER_URI=http://10.42.0.75:11311/ where 10.42.0.75 is the address of the master machine (the one running roscore).
+
+If you have trouble installing APM Planner, follow these instructions instead:
+https://github.com/rspandolfi/DaVinciChallenge-Build-a-Drone-Workshop/blob/master/APM-Installer/install.sh#L14
+You will need to add sudo to some of the commands.

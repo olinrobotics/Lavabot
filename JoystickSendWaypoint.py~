@@ -120,8 +120,10 @@ if __name__ == '__main__':
 	addWaypoint(46,46)
 	r2.sleep()
 	addWaypoint(48,48)
-	r = rospy.Rate(10)
-	while not rospy.is_shutdown():
-		r.sleep()
-		obstacle_detection(OBSTACLE_DISTANCE)
+
+# Wait for input and check for obstacles
+r = rospy.Rate(10)
+while not rospy.is_shutdown():
+	r.sleep()
+	obstacle_detection(OBSTACLE_DISTANCE)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-""" Sends waypoint from PixHawk to Odroid """
+""" Send waypoint from PixHawk to Odroid """
 
 import rospy
 from sensor_msgs.msg import NavSatFix
