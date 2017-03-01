@@ -16,6 +16,8 @@ from Obstacles import infrared_sensor
 # Designated ROS channels
 thisName = "sam"
 otherName = "frodo"
+odroidName = "mavros_sam"
+# We must set the name of the node in px4.launch to "mavros_sam"
 
 # State variables
 latitude = 0
@@ -53,6 +55,8 @@ def joyCallBack(data):
 
 def gpsCallBack(data):
 	"""Callback for GPS location: updates latitude and longitude."""
+	publish("Publisher Name: "+data.getPublisherName())
+	if not data.getPublisherName == odroidName: return
 	global latitude, longitude
 	latitude = data.latitude
 	longitude = data.longitude
@@ -60,6 +64,8 @@ def gpsCallBack(data):
 
 def waypointCallBack(data):
 	"""Callback for changes to waypoints: updates waypoints list."""
+	publish("Publisher Name: "+data.getPublisherName())
+	if not data.getPublisherName == odroidName: return
 	global waypoints
 	waypoints = data.waypoints
 
@@ -72,7 +78,6 @@ def obstacleCallBack(data):
 	if thisname == "sam":
 		addWaypoint(latitude, longitude)
 		publish("Obstacle detected: stopping rover")
-
 
 # Methods to send and follow waypoints
 def sendWaypoint():
@@ -109,7 +114,7 @@ def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
 
 def reachedWaypoint():
 	"""Determine whether the robot is close enough to the current waypoint."""
-	if not waypoints[0] return False
+	if len(waypoints) == 0 return False
 	dx = waypoints[0].xlat-latitude
 	dy = waypoints[0].ylong-longitude
 	return dx^2+dy^2 <= WAYPOINT_TOLERANCE

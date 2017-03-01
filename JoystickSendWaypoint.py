@@ -16,6 +16,8 @@ from Obstacles import infrared_sensor
 # Designated ROS channels
 thisName = "sam"
 otherName = "frodo"
+odroidName = "mavros_sam"
+# We must set the name of the node in px4.launch to "mavros_sam"
 
 # State variables
 latitude = 0
@@ -44,6 +46,8 @@ output = rospy.Publisher('/output', String, queue_size=10)
 # Callback functions for subscribed topics
 def joyCallBack(data):
 	"""Callback for RC input: calls sendWaypoint function."""
+	publish("Publisher Name: "+data.getPublisherName())
+	if not data.getPublisherName == odroidName: return
 	global lastData
 	waypoint_data = data.channels(button)
 	# around 1100, 1500, or 1900
@@ -53,6 +57,8 @@ def joyCallBack(data):
 
 def gpsCallBack(data):
 	"""Callback for GPS location: updates latitude and longitude."""
+	publish("Publisher Name: "+data.getPublisherName())
+	if not data.getPublisherName == odroidName: return
 	global latitude, longitude
 	latitude = data.latitude
 	longitude = data.longitude
@@ -60,6 +66,8 @@ def gpsCallBack(data):
 
 def waypointCallBack(data):
 	"""Callback for changes to waypoints: updates waypoints list."""
+	publish("Publisher Name: "+data.getPublisherName())
+	if not data.getPublisherName == odroidName: return
 	global waypoints
 	waypoints = data.waypoints
 
@@ -72,7 +80,6 @@ def obstacleCallBack(data):
 	if thisname == "sam":
 		addWaypoint(latitude, longitude)
 		publish("Obstacle detected: stopping rover")
-
 
 # Methods to send and follow waypoints
 def sendWaypoint():
