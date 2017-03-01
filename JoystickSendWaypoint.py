@@ -8,6 +8,7 @@ from mavros_msgs.msg import Waypoint
 from mavros_msgs.srv import WaypointPush
 from mavros_msgs.srv import WaypointPull
 from std_msgs.msg import String
+from std_msgs.msg import Bool
 from std_msgs.msg import Float64MultiArray
 import os
 from Obstacles import infrared_sensor
@@ -35,9 +36,10 @@ rospy.init_node('JoystickSendWaypoint')
 rospy.Subscriber('/mavros/global_position/global', NavSatFix, gpsCallBack)
 rospy.Subscriber('/mavros/mission/waypoints', WaypointList, waypointCallBack)
 rospy.Subscriber('/mavros/rc/in', RCIn, joyCallBack)
+rospy.Subscriber('/obstacle/detection', Bool, obstacleCallBack)
 rospy.Subscriber('/'+thisName+'/addwaypoint', Float64MultiArray, addWaypointCallBack)
 publishWaypoint = rospy.Publisher('/'+otherName+'/addwaypoint', Float64MultiArray, queue_size=10)
-beacon = rospy.Publisher('/'+thisName+'/beacon', String, queue_size=10)
+output = rospy.Publisher('/output', String, queue_size=10)
 
 # Callback functions for subscribed topics
 def joyCallBack(data):
@@ -54,7 +56,7 @@ def gpsCallBack(data):
 	global latitude, longitude
 	latitude = data.latitude
 	longitude = data.longitude
-	if reachedWaypoint(): beacon.publish("Reached ("+str(latitude)+", "+str(longitude)+")")
+	if reachedWaypoint(): publish("Reached ("+str(latitude)+", "+str(longitude)+")")
 
 def waypointCallBack(data):
 	"""Callback for changes to waypoints: updates waypoints list."""
@@ -65,10 +67,17 @@ def addWaypointCallBack(data):
 	"""Callback from other robot: add waypoint to end of list."""
 	addWaypoint(*data.data)
 
+def obstacleCallBack(data):
+	"""Callback when obstacle is detected: stops the rover."""
+	if thisname == "sam":
+		addWaypoint(latitude, longitude)
+		publish("Obstacle detected: stopping rover")
+
+
 # Methods to send and follow waypoints
 def sendWaypoint():
 	"""Send current location as a waypoint for the other Odroid."""
-	print('Sending waypoint: ('+str(latitude)+', '+str(longitude)+")")
+	publish("Sending waypoint: ("+str(latitude)+", "+str(longitude)+")")
 	publishWaypoint.publish([latitude, longitude])
 
 def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
@@ -90,17 +99,13 @@ def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
 	waypoint.x_lat = lat
 	waypoint.y_long = lon
 	waypoint.z_alt = 0
-	print("Adding waypoint: ("+str(waypoint.x_lat)+", "+str(waypoint.y_long)+")")
+	publish("Adding waypoint: ("+str(waypoint.x_lat)+", "+str(waypoint.y_long)+")")
 	oldWaypoints = waypoints[:]
-	print("Old waypoints: " + str(len(oldWaypoints)))
+	publish("Old waypoints: " + str(len(oldWaypoints)))
 	if override: result = push([waypoint])
 	elif detour: result = push([waypoint]+oldWaypoints)
 	else result = push(oldWaypoints + [waypoint])
-	print(result)
-
-def obstacle_detection(lat, lon, dis):
-	"""Stop rover if an obstacle is detected."""
-	if not infrared_sensor(dis): addWaypoint(latitude, longitude)
+	publish("Result: " + str(result))
 
 def reachedWaypoint():
 	"""Determine whether the robot is close enough to the current waypoint."""
@@ -108,6 +113,11 @@ def reachedWaypoint():
 	dx = waypoints[0].xlat-latitude
 	dy = waypoints[0].ylong-longitude
 	return dx^2+dy^2 <= WAYPOINT_TOLERANCE
+
+def publish(text):
+	"""Print message to both console and ROS topic /output."""
+	print(text)
+	output.publish(thisname+":\t"+text)
 
 # Test code
 if __name__ == '__main__':
