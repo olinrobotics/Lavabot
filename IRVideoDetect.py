@@ -10,15 +10,19 @@ import time
 
 class IRVideoDetect:
 
+    #Initialize Ros topics
     def __init__(self,cap):
         rospy.init_node('IR_Video_detect',anonymous=True)
         self.pub = rospy.Publisher('/IR_video_detect',String,queue_size=100)
         #rospy.Subscriber('/usb_camera',Image,self.video_callback)
         self.cap = cap
 
+    #Callback for video cam
     def video_callback(self,data):
         pass
 
+    #Label the biggest red object in the video as the obstacle
+    # and sense if they are approaching
     def color_detect(self):
         while True:
             ret,frame = self.cap.read()
@@ -45,6 +49,7 @@ class IRVideoDetect:
         cap.release()
         cv2.destroyAllWindows()
 
+    #Running the nodes
     def run(self):
         r = rospy.Rate(2)
         time.sleep(2)
@@ -52,6 +57,7 @@ class IRVideoDetect:
             self.color_detect()
             r.sleep
 
+#Testing nodes
 if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
     od = IRVideoDetect(cap)
