@@ -109,7 +109,7 @@ def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
 
 def reachedWaypoint():
 	"""Determine whether the robot is close enough to the current waypoint."""
-	if !waypoints[0] return False
+	if len(waypoints) == 0 return False
 	dx = waypoints[0].xlat-latitude
 	dy = waypoints[0].ylong-longitude
 	return dx^2+dy^2 <= WAYPOINT_TOLERANCE
