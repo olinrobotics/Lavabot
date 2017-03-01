@@ -7,41 +7,26 @@ from mavros_msgs.msg import WaypointList
 from mavros_msgs.msg import Waypoint
 from mavros_msgs.srv import WaypointPush
 from mavros_msgs.srv import WaypointPull
-from std_msgs.msg import String
-from std_msgs.msg import Float64MultiArray
+from std_msgs.msg import Bool
 import os
 from Obstacles import infrared_sensor
 
-# Designated ROS channels
-thisName = "sam"
-otherName = "frodo"
-
-# State variables
+# State
 latitude = 0
 longitude = 0
 waypoints = []
+odetect = False
 
 # Joystick button
 button = 5
 lastData = -1
 
-# Constants
-WAYPOINT_TOLERANCE = .01
-
-# ROS services and topics
+# Services
 pull = rospy.ServiceProxy('/mavros/mission/pull',  WaypointPull)
 push = rospy.ServiceProxy('/mavros/mission/push',  WaypointPush)
-rospy.init_node('JoystickSendWaypoint')
-rospy.Subscriber('/mavros/global_position/global', NavSatFix, gpsCallBack)
-rospy.Subscriber('/mavros/mission/waypoints', WaypointList, waypointCallBack)
-rospy.Subscriber('/mavros/rc/in', RCIn, joyCallBack)
-rospy.Subscriber('/'+thisName+'/addwaypoint', Float64MultiArray, addWaypointCallBack)
-publishWaypoint = rospy.Publisher('/'+otherName+'/addwaypoint', Float64MultiArray, queue_size=10)
-beacon = rospy.Publisher('/'+thisName+'/beacon', String, queue_size=10)
 
-# Callback functions for subscribed topics
+# Callback for RC input
 def joyCallBack(data):
-	"""Callback for RC input: calls sendWaypoint function."""
 	global lastData
 	waypoint_data = data.channels(button)
 	# around 1100, 1500, or 1900
@@ -49,35 +34,29 @@ def joyCallBack(data):
 		sendWaypoint()
 	lastData = waypoint_data
 
+# Callback for GPS location
 def gpsCallBack(data):
-	"""Callback for GPS location: updates latitude and longitude."""
 	global latitude, longitude
 	latitude = data.latitude
 	longitude = data.longitude
-	if reachedWaypoint(): beacon.publish("Reached ("+str(latitude)+", "+str(longitude)+")")
 
+# Callback for changes to waypoints
 def waypointCallBack(data):
-	"""Callback for changes to waypoints: updates waypoints list."""
 	global waypoints
 	waypoints = data.waypoints
 
-def addWaypointCallBack(data):
-	"""Callback from other robot: add waypoint to end of list."""
-	addWaypoint(*data.data)
+def irSensorCallback(data):
+	global odetect
+	odetect = data
 
-# Methods to send and follow waypoints
+# Send waypoint to other Odroid
 def sendWaypoint():
-	"""Send current location as a waypoint for the other Odroid."""
 	print('Sending waypoint: ('+str(latitude)+', '+str(longitude)+")")
-	publishWaypoint.publish([latitude, longitude])
+	addWaypoint(latitude, longitude)
+	# TODO: send latitude/longitude to other odroid instead
 
-def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
-	"""Send waypoint from Odroid to Pixhawk.
-	
-	Keyword arguments:
-	detour -- insert waypoint at beginning of array
-	override -- clear previous waypoints)
-	"""
+# Send waypoint to Pixhawk
+def addWaypoint(lat, lon):
 	waypoint = Waypoint()
 	waypoint.frame = 3
 	waypoint.command = 16
@@ -93,35 +72,39 @@ def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
 	print("Adding waypoint: ("+str(waypoint.x_lat)+", "+str(waypoint.y_long)+")")
 	oldWaypoints = waypoints[:]
 	print("Old waypoints: " + str(len(oldWaypoints)))
-	if override: result = push([waypoint])
-	elif detour: result = push([waypoint]+oldWaypoints)
-	else result = push(oldWaypoints + [waypoint])
-	print(result)
+	#result = push(oldWaypoints + [waypoint])
+	#print(result)
 
-def obstacle_detection(lat, lon, dis):
-	"""Stop rover if an obstacle is detected."""
-	if not infrared_sensor(dis): addWaypoint(latitude, longitude)
+def Obstacle_detection(lat,lon,dis):
+	#This is not useful anymore
+	global latitude, longitude
+	while (latitude != lat) and (longitude !=lon) and infrared_sensor(dis):
+		pass
+	if infrared_sensor(dis) == False:
+		addWaypoint(latitude, longitude)
 
-def reachedWaypoint():
-	"""Determine whether the robot is close enough to the current waypoint."""
-	if !waypoints[0] return False
-	dx = waypoints[0].xlat-latitude
-	dy = waypoints[0].ylong-longitude
-	return dx^2+dy^2 <= WAYPOINT_TOLERANCE
+# ROS topics
+rospy.init_node('JoystickSendWaypoint')
+rospy.Subscriber('/mavros/global_position/global', NavSatFix, gpsCallBack)
+rospy.Subscriber('/mavros/mission/waypoints', WaypointList, waypointCallBack)
+rospy.Subscriber('/mavros/rc/in', RCIn, joyCallBack)
+rospy.Subscriber('/obstacle_detection',Bool,irSensorCallback)
 
 # Test code
 if __name__ == '__main__':
+	r = rospy.Rate(10)
 	r2 = rospy.Rate(1)
 	r2.sleep()
 	addWaypoint(42,42)
+	Obstacle_detection(42,42,800)
 	r2.sleep()
 	addWaypoint(44,44)
+	Obstacle_detection(44,44,800)
 	r2.sleep()
 	addWaypoint(46,46)
+	Obstacle_detection(46,46,800)
 	r2.sleep()
 	addWaypoint(48,48)
-	r = rospy.Rate(10)
+	Obstacle_detection(48,48,800)
 	while not rospy.is_shutdown():
-		r.sleep()
-		obstacle_detection(OBSTACLE_DISTANCE)
-
+		r.sleep() # wait for input
