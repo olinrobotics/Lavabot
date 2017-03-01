@@ -36,7 +36,7 @@ rospy.init_node('JoystickSendWaypoint')
 rospy.Subscriber('/mavros/global_position/global', NavSatFix, gpsCallBack)
 rospy.Subscriber('/mavros/mission/waypoints', WaypointList, waypointCallBack)
 rospy.Subscriber('/mavros/rc/in', RCIn, joyCallBack)
-rospy.Subscriber('/obstacle/detection', Bool, obstacleCallBack)
+rospy.Subscriber('/obstacle_detection', Bool, obstacleCallBack)
 rospy.Subscriber('/'+thisName+'/addwaypoint', Float64MultiArray, addWaypointCallBack)
 publishWaypoint = rospy.Publisher('/'+otherName+'/addwaypoint', Float64MultiArray, queue_size=10)
 output = rospy.Publisher('/output', String, queue_size=10)
@@ -133,5 +133,4 @@ if __name__ == '__main__':
 	r = rospy.Rate(10)
 	while not rospy.is_shutdown():
 		r.sleep()
-		obstacle_detection(OBSTACLE_DISTANCE)
 
