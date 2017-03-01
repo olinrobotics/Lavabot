@@ -4,7 +4,7 @@ altitude,
 perceived GPS location, 
 current behavior'''
 
-from Tkinter import *
+from Tkinter import * # GUI module
 import rospy
 from sensor_msgs.msg import NavSatFix
 from mavros_msgs.msg import WaypointList
@@ -14,7 +14,7 @@ import os
 
 
 def gpsCallBack(msg):
-	GPS_pos.set('lat: '+str(msg.latitude)+'long: '+str(msg.longitude))
+	GPS_pos.set('lat: '+str(msg.latitude)+', long: '+str(msg.longitude))
 def waypointCallBack(msg):
 	pass 
 def altCallBack(msg):
@@ -23,7 +23,7 @@ def altCallBack(msg):
 rospy.init_node('OdroidGUI')
 rospy.Subscriber('/mavros/global_position/global', NavSatFix, gpsCallBack)
 rospy.Subscriber('/mavros/mission/waypoints', WaypointList, waypointCallBack)
-rospy.Subscriber('/mavros/global_position/rel_alt', NavSatFix, altCallBack)
+rospy.Subscriber('/mavros/global_position/rel_alt', Float64, altCallBack)
 root = Tk()
 root.title("Odroid GUI")
 
