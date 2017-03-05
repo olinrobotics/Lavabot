@@ -1,0 +1,26 @@
+﻿FUSE SPECS
+Jeremy – 3.5.17
+
+Fuses have holding current and trip current specifications. The actual amperage at which the fuse trips is somewhere between these two values and decreases at higher temperatures. I chose fuses such that the holding current is greater than the high end of current draw for each component to minimize the chance that a fuse trips under normal use.
+
+
+Hokuyo UST-10LX Lidar
+Supply voltage 12VDC/24VDC
+Supply current 150mA or less (up to 450mA during startup)
+
+Digikey F8132CT-ND Surface Mount Resettable Fuse
+Maximum voltage 60V
+Holding current 500mA
+Trip current 1A
+
+
+ODROID-XU4
+Supply voltage 5V
+General current consumption 1A
+High current consumption (with several peripheral devices) 4A
+Built-in overvoltage protection up to 28V
+
+Digikey F8136DKR-ND Surface Mount Resettable Fuse
+Maximum voltage 15V
+Holding current 4A
+Trip current 8A
