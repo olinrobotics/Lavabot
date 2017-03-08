@@ -1,28 +1,44 @@
+ONSTRUCTIONS:
+
 To set up an odroid for communicating over mavros, install ros indigo and mavros.
+http://wiki.ros.org/indigo/Installation/Ubuntu
+https://dev.px4.io/ros-mavros-installation.html
 
 To run code on the odroid via ssh, type these commands into a shell on your computer:
-ifconfig
+ifconfig						// find ip address
 nmap 10.42.0.0/24					// use address from ifconfig
 ssh root@10.42.0.75					// use address from nmap
 odroid							// password for odroid
-scp MyProgram.py root@10.42.0.75:/root/
-roscore
-roslaunch mavros apm.launch
-python MyProgram.py
+scp MyProgram.py root@10.42.0.75:/root/			// do this step on your computer, not Odroid
+roscore							// start ROS
+roslaunch mavros apm.launch				// start mavros
+python MyProgram.py					// run script
+
+To set up ROS between multiple computers:
+On each connected machine, run ROS_MASTER_URI=http://10.42.0.75:11311/ where 10.42.0.75 is the address of the master machine (the one running roscore).
+
+To edit the name of the MAVROS node:
+vim /opt/ros/indigo/share/mavros/launch/node.launch
+
+
+DEBUGGING TIPS:
+
+If there is no route to host when you try to connect to odroid, attach a keyboard to the odroid and type the following commands:
+root			// username
+odroid			// password
+ifconfig eth0 up
+dhclient eth0
 
 If topics exist but messages aren't being published, run the following command:
 rosservice call /mavros/set_stream_rate 0 10 1
 
-If there is no route to host when you try to connect to odroid, attach a keyboard to the odroid and type the following commands:
-ifconfig eth0 up
-dhclient eth0
-
-To set up ROS between multiple computers:
-On each connected machine, run ROS_MASTER_URI=http://10.42.0.75:11311/ where 10.42.0.75 is the address of the master machine (the one running roscore).
+If roscore command crashes due to locale problems:
+sudo locale-gen en_US.UTF-8
+sudo dpkg-reconfigure locales
+edit the file /etc/default/locale to contain the line: LANG=en_US.UTF-8
+(source: http://askubuntu.com/questions/454260/how-to-solve-locale-problem)
 
 If you have trouble installing APM Planner, follow these instructions instead:
 https://github.com/rspandolfi/DaVinciChallenge-Build-a-Drone-Workshop/blob/master/APM-Installer/install.sh#L14
 You will need to add sudo to some of the commands.
 
-To edit the name of the MAVROS node:
-vim /opt/ros/indigo/share/mavros/launch/node.launch

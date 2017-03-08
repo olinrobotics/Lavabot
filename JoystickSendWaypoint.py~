@@ -1,4 +1,4 @@
-""" Code for communication between Pixhawk and Odroid. """
+""" Code for communication between Pixhawk and Odroid."""
 
 import rospy
 from mavros_msgs.msg import RCIn
@@ -10,12 +10,18 @@ from mavros_msgs.srv import WaypointPull
 from std_msgs.msg import String
 from std_msgs.msg import Bool
 from std_msgs.msg import Float64MultiArray
-import os
-from Obstacles import infrared_sensor
+import sys
 
 # Designated ROS channels
-thisName = "/mavros_sam"
-otherName = "/mavros_frodo"
+if len(sys.argv)==3:
+	thisName = sys.argv[1]
+	otherName = sys.argv[2]
+elif len(sys.argv)==1 or sys.argv[1]=="/mavros_sam" or sys.argv[1]=="sam":
+	thisName = "/mavros_sam"
+	otherName = "/mavros_frodo"
+else:
+	thisName = "/mavros_frodo"
+	otherName = "/mavros_sam"
 # We must first set the name of the node in node.launch to "mavros_sam"
 # vim /opt/ros/indigo/share/mavros/launch/node.launch
 
@@ -67,9 +73,9 @@ def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
 def reachedWaypoint():
 	"""Determine whether the robot is close enough to the current waypoint."""
 	if len(waypoints) == 0: return False
-	dx = waypoints[0].xlat-latitude
-	dy = waypoints[0].ylong-longitude
-	return dx^2+dy^2 <= WAYPOINT_TOLERANCE
+	dx = waypoints[0].x_lat-latitude
+	dy = waypoints[0].y_long-longitude
+	return dx**2+dy**2 <= WAYPOINT_TOLERANCE
 
 def publish(text):
 	"""Print message to both console and ROS topic /output."""
@@ -80,7 +86,7 @@ def publish(text):
 def joyCallBack(data):
 	"""Callback for RC input: calls sendWaypoint function."""
 	global lastData
-	waypoint_data = data.channels(button)
+	waypoint_data = data.channels[button]
 	# around 1100, 1500, or 1900
 	if lastData>0 and abs(lastData - waypoint_data) > 300:
 		sendWaypoint()
@@ -104,7 +110,7 @@ def addWaypointCallBack(data):
 
 def obstacleCallBack(data):
 	"""Callback when obstacle is detected: stops the rover."""
-	if thisName == "sam":
+	if thisName == "/mavros_sam":
 		addWaypoint(latitude, longitude)
 		publish("Obstacle detected: stopping rover")
 
@@ -119,6 +125,8 @@ rospy.Subscriber('/obstacle_detection', Bool, obstacleCallBack)
 rospy.Subscriber(thisName+'/addwaypoint', Float64MultiArray, addWaypointCallBack)
 publishWaypoint = rospy.Publisher(otherName+'/addwaypoint', Float64MultiArray, queue_size=10)
 output = rospy.Publisher('/output', String, queue_size=10)
+publish("This name = " + thisName)
+publish("Other name = " + otherName)
 
 # Test code
 if __name__ == '__main__':
