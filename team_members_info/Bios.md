@@ -25,6 +25,8 @@ Yichen is a first year studying Electrical and Computer Engineering. He has an i
 
 ###Jeremy:
 
+Jeremy is a first-year student studying Electrical and Computer Engineering. In his spare time, he does digital art, music composition, and design projects. He is interested in digital and analog electronics and is currently working on miscellaneous electrical design on the robots.
+
 
 ###Prava:
 
