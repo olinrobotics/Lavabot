@@ -25,7 +25,7 @@ To set up ROS between multiple computers:
 	To change a machine's hostname:
 		vim /etc/hostname			// edit hostname file
 			sam				// replace the current name
-		hostname sam				// change name temporarily
+		hostname sam				// to change name temporarily
 
 To edit the name of the MAVROS node:
 	vim /opt/ros/indigo/share/mavros/launch/node.launch
