@@ -29,6 +29,12 @@ Yichen is a first year studying Electrical and Computer Engineering. He has an i
 
 Jeremy is a first-year student studying Electrical and Computer Engineering. In his spare time, he does digital art, music composition, and design projects. He is interested in digital and analog electronics and is currently working on miscellaneous electrical design on the robots.
 
+###Nick:
+
+<img src="https://github.com/olinrobotics/Lavabot/blob/master/team_members_info/NickSherman.jpg" width="200">
+
+Nick is a first year studing Electrical and Computer Engineering. He loves seeing software and hardware interact, and is always ready to learn more about this interaction. 
+
 ###Prava:
 
 
