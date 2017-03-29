@@ -145,16 +145,16 @@ publish("Other name = " + otherName)
 
 # Test code
 if __name__ == '__main__':
-	#r2 = rospy.Rate(1)
-	#r2.sleep()
-	#addWaypoint(42,42)
-	#r2.sleep()
-	#addWaypoint(44,44)
-	#r2.sleep()
-	#addWaypoint(46,46)
-	#r2.sleep()
-	#addWaypoint(48,48)
-	#r = rospy.Rate(10)
+	r2 = rospy.Rate(1)
+	r2.sleep()
+	addWaypoint(42,42)
+	r2.sleep()
+	addWaypoint(44,44)
+	r2.sleep()
+	addWaypoint(46,46)
+	r2.sleep()
+	addWaypoint(48,48)
+	r = rospy.Rate(10)
 	while not rospy.is_shutdown():
 		r.sleep()
 
