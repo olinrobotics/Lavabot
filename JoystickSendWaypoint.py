@@ -50,7 +50,7 @@ def sendWaypoint():
 
 def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
 	"""Send waypoint from Odroid to Pixhawk.
-	
+
 	Keyword arguments:
 	detour -- insert waypoint at beginning of array
 	override -- clear previous waypoints)
@@ -91,6 +91,8 @@ def publish(text):
 def joyCallBack(data):
 	"""Callback for RC input: calls sendWaypoint function."""
 	global lastData
+	if len(data.channels) <= button:
+		return
 	waypoint_data = data.channels[button]
 	# around 1100, 1500, or 1900
 	if lastData>0 and abs(lastData - waypoint_data) > 300:
@@ -154,7 +156,6 @@ if __name__ == '__main__':
 	#addWaypoint(46,46)
 	#r2.sleep()
 	#addWaypoint(48,48)
-	#r = rospy.Rate(10)
+	r = rospy.Rate(10)
 	while not rospy.is_shutdown():
 		r.sleep()
-
