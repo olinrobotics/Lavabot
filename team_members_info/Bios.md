@@ -23,13 +23,13 @@ Paul is a first year student studying Aerospace Engineering. He is excited about
 
 Yichen is a first year studying Electrical and Computer Engineering. He has an interest in robotics and autonomous driving. His current work is focused on obstacle detection with different sensors and cameras.
 
-###Jeremy:
+###Jeremy Ryan
 
 <img src="https://github.com/olinrobotics/Lavabot/blob/master/team_members_info/Jeremy%20Ryan.jpg" width="200">
 
 Jeremy is a first-year student studying Electrical and Computer Engineering. In his spare time, he does digital art, music composition, and design projects. He is interested in digital and analog electronics and is currently working on miscellaneous electrical design on the robots.
 
-###Nick:
+###Nick Sherman
 
 <img src="https://github.com/olinrobotics/Lavabot/blob/master/team_members_info/NickSherman.jpg" width="200">
 
@@ -38,6 +38,12 @@ Nick is a first year studing Electrical and Computer Engineering. He loves seein
 ###Prava:
 
 
-###Kyle:
+###[Kyle Combes](https://github.com/kylecombes/)
 
-###Onur
+![kyle-combes](/team_members_info/Kyle_Combes.jpg)
+
+Kyle is a member of the Class of 2020, with an interest in autonomous vehicles and efficient
+transportation. He deals more with the software side of things, and is currently working on
+the behavior arbiter for Lavabot's ground vehicle.
+
+###Onur Talu
