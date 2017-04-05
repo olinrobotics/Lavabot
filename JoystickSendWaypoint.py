@@ -41,11 +41,19 @@ lastData = -1
 WAYPOINT_TOLERANCE = .01
 
 # Methods to send and follow waypoints
-def sendWaypoint():
-	"""Send current location as a waypoint for the other Odroid."""
-	publish("Sending waypoint: ("+str(latitude)+", "+str(longitude)+")")
+def sendWaypoint(clear=False):
+	"""Send current location as a waypoint for the other Odroid.
+
+	Keyword arguments:
+	clear -- remove all waypoints from other Odroid
+	"""
 	location = Float64MultiArray()
-	location.data = [latitude, longitude]
+	if clear:
+		publish("Clearing all waypoints on "+otherName)
+		location.data = [0]
+	else:
+		publish("Sending waypoint: ("+str(latitude)+", "+str(longitude)+")")
+		location.data = [latitude, longitude]
 	publishWaypoint.publish(location)
 
 def addWaypoint(lat, lon, obstacles=False, detour=False, override=False):
@@ -94,9 +102,14 @@ def joyCallBack(data):
 	if len(data.channels) <= button:
 		return
 	waypoint_data = data.channels[button]
+	if lastData == -1:
+		lastData = waypoint_data
+		return
 	# around 1100, 1500, or 1900
-	if lastData>0 and abs(lastData - waypoint_data) > 300:
+	if lastData > 1200 and waypoint_data < 1200:
 		sendWaypoint()
+	if lastData < 1800 and waypoint_data > 1800:
+		sendWaypoint(True)
 	lastData = waypoint_data
 
 def gpsCallBack(data):
@@ -122,7 +135,14 @@ def waypointCallBack(data):
 
 def addWaypointCallBack(data):
 	"""Callback from other robot: add waypoint to end of list."""
-	addWaypoint(*data.data)
+	global waypoints
+	if len(data.data)<2:
+		publish("Clearing waypoints: " + str(len(waypoints)))
+		waypoints = []
+		result = push([])
+		publish("Result: " + str(result))
+	else:
+		addWaypoint(*data.data)
 
 def obstacleCallBack(data):
 	"""Callback when obstacle is detected: stops the rover."""
