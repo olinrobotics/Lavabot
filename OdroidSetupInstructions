@@ -5,37 +5,50 @@ To set up an odroid for communicating over mavros, install ros indigo and mavros
 	https://dev.px4.io/ros-mavros-installation.html
 
 To run code on the odroid via ssh:
-	ifconfig					// find ip address
-	nmap 10.42.0.0/24				// use address from ifconfig
-	ssh root@10.42.0.75				// use address from nmap
-	odroid						// password for odroid
-	scp MyProgram.py root@10.42.0.75:/root/		// do this step on your computer, not Odroid
-	roscore						// start ROS
-	roslaunch mavros apm.launch			// start mavros
-	python MyProgram.py				// run script
+	ifconfig					# find ip address
+	nmap 10.42.0.0/24				# use address from ifconfig
+	ssh root@10.42.0.75				# use address from nmap
+	odroid						# password for odroid
+	scp MyProgram.py root@10.42.0.75:/roo		# do this step on your computer, not Odroid
+	roscore						# start ROS
+	roslaunch mavros apm.launch			# start mavros
+	python MyProgram.py				# run script
 
 To set up ROS between multiple computers:
 	On each computer besides the master (the one running roscore):
-		ROS_MASTER_URI=http://sam:11311/ 	// sam is the master machine
+		ROS_MASTER_URI=http://sam:11311/ 	# sam is the master machine
 	All machines must be able to ping each other by name (e.g. ping sam)
 	To set the addresses and names (make sure that each machine has a different name):
 		vim /etc/hostnames
 			192.168.16.97		sam
 			192.168.16.196		frodo
 	To change a machine's hostname:
-		vim /etc/hostname			// edit hostname file
-			sam				// replace the current name
-		hostname sam				// change name temporarily
+		vim /etc/hostname			# edit hostname file
+			sam				# replace the current name
+		hostname sam				# change name temporarily
 
 To edit the name of the MAVROS node:
 	vim /opt/ros/indigo/share/mavros/launch/node.launch
+
+To turn wifi dongle into access point:
+	Follow setup instructions at https://github.com/oblique/create_ap:
+		git clone https://github.com/oblique/create_ap
+		cd create_ap
+		make install				# Only do this and previous steps the first time
+		ifdown wlan1				# Disconnect the dongle from wifi
+		create_ap wlan1 eth0 lavanet --no-virt	# Create the network
+	You may need to install hostapd and iptables:
+		apt-get install iptables
+		apt-get install hostapd
+	If you get error message about hostapd needing rtl871xdrv patches:
+		Run the code at https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=138241
 
 
 DEBUGGING TIPS:
 
 If there is no route to host when you try to connect to odroid, attach a keyboard to the odroid and type the following commands:
-	root			// username
-	odroid			// password
+	root			# username
+	odroid			# password
 	ifconfig eth0 up
 	dhclient eth0
 
