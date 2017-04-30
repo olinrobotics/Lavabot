@@ -42,6 +42,7 @@ altitude.set('10')
 
 
 def update(*args):
+	altitude.set('1000')
 	pass
 
 Label(mainframe, text="altitude").grid(column=1, row=1, sticky=W)

@@ -42,6 +42,7 @@ To turn wifi dongle into access point:
 		apt-get install hostapd
 	If you get error message about hostapd needing rtl871xdrv patches:
 		Run the code at https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=138241
+	IP address will change to 192.168.12.1
 
 
 DEBUGGING TIPS:
