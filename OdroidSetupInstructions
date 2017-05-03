@@ -3,6 +3,13 @@ INSTRUCTIONS:
 To set up an odroid for communicating over mavros, install ros indigo and mavros:
 	http://wiki.ros.org/indigo/Installation/Ubuntu
 	https://dev.px4.io/ros-mavros-installation.html
+	
+Before ifconfig:
+	Go to your wifi settings
+	Go to edit connections
+	Add a new ethernet connection 
+	Ethernet--> Get the device from the other ethernet 
+	IPv4 Security--> Shared to other computers
 
 To run code on the odroid via ssh:
 	ifconfig					# find ip address
